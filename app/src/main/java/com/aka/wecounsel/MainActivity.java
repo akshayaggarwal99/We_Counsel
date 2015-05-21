@@ -1,20 +1,34 @@
 package com.aka.wecounsel;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
 
-
+EditText username,password;
+    String user,pass;
+    Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        username = (EditText) findViewById(R.id.loginUsername);
+        password = (EditText) findViewById(R.id.loginPassword);
+        user = username.getText().toString();
+        pass = password.getText().toString();
+
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,5 +50,10 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onlogin(View view) {
+        Intent intent= new Intent(getApplicationContext(),SubActivity.class);
+        startActivity(intent);
     }
 }

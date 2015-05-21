@@ -1,6 +1,6 @@
 <resources>
     <!-- inherit from the material theme -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="MyCustomTheme">
         <!-- Main theme colors -->
         <!--   your app branding color for the app bar -->
         <item name="colorPrimary">@color/primaryColor</item>
@@ -8,6 +8,10 @@
         <item name="colorPrimaryDark">@color/primaryColorDark</item>
         <!--   theme UI controls like checkboxes and text fields -->
         <item name="colorAccent">@color/accentColor</item>
+    </style>
+    <style name="MyCustomTheme" parent="Theme.AppCompat.Light">
+        <item name="android:textColorPrimary">@color/off_white</item>
+        <item name="android:textColorSecondary">@color/accentColor</item>
     </style>
 
 </resources>

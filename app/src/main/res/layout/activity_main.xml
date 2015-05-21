@@ -75,7 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_login"
-                android:layout_weight="50"/>
+                android:layout_weight="50"
+                android:onClick="onlogin"/>
 
             <Button
                 android:id="@+id/signupButton"
