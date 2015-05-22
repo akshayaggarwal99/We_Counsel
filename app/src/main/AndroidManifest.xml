@@ -30,6 +30,10 @@
             android:name=".SubActivity"
             android:label="@string/title_activity_sub" >
         </activity>
+        <activity
+            android:name=".SelectionActivity"
+            android:label="@string/title_activity_selection" >
+        </activity>
     </application>
 
 </manifest>

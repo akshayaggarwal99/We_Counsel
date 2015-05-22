@@ -6,34 +6,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
-
-EditText username,password;
-    String user,pass;
-    Button login;
+public class SelectionActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        username = (EditText) findViewById(R.id.loginUsername);
-        password = (EditText) findViewById(R.id.loginPassword);
-        user = username.getText().toString();
-        pass = password.getText().toString();
-
-
+        setContentView(R.layout.activity_selection);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_selection, menu);
         return true;
     }
 
@@ -52,8 +38,8 @@ EditText username,password;
         return super.onOptionsItemSelected(item);
     }
 
-    public void onlogin(View view) {
-        Intent intent= new Intent(getApplicationContext(),SelectionActivity.class);
+    public void onEngineeringClick(View view) {
+        Intent intent=new Intent(getApplicationContext(),SubActivity.class);
         startActivity(intent);
     }
 }

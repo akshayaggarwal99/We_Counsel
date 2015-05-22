@@ -84,7 +84,7 @@ public class SubActivity extends ActionBarActivity implements MaterialTabListene
 
         @Override
         public int getCount() {
-            return 16;
+            return 6;
         }
 
         @Override

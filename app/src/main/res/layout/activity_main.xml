@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="username"
+            android:text="Username"
             android:id="@+id/loginUsernameText"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/sinch_purple"
@@ -74,15 +74,20 @@
                 android:id="@+id/loginButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_login"
+                android:background="@drawable/button_shape"
                 android:layout_weight="50"
+                android:textColor="@android:color/white"
+                android:text="Login"
+                android:textSize="20dp"
                 android:onClick="onlogin"/>
 
             <Button
                 android:id="@+id/signupButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/signup"
+                android:text="Sign Up"
+                android:textSize="20dp"
+                android:background="@drawable/button_shape"
                 android:layout_weight="50"/>
         </LinearLayout>
     </LinearLayout>
