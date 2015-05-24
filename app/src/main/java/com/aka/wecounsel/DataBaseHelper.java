@@ -37,7 +37,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String KEY_SCCL="SCCL";
     public static final String KEY_STOP="STOP";
     public static final String KEY_STCL="STCL";
-
+    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_COLLEGE, KEY_BRANCH, KEY_BRANCH_CODE,KEY_GENOP,KEY_GENCL,KEY_OBCOP,KEY_OBCCL,KEY_SCOP,KEY_SCCL,KEY_STOP,KEY_STCL};
 
     private SQLiteDatabase myDataBase;
 
@@ -167,6 +167,43 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
     }
+
+    // Return all data in the database.
+    public Cursor getAllRows() {
+        String where = null;
+        Cursor c = 	myDataBase.query(true, DATABASE_TABLE1, ALL_KEYS,
+                where, null, null, null, null, null);
+        if (c != null) {
+            c.moveToFirst();
+        }
+        return c;
+    }
+
+    // Get a specific row (by rowId)
+    public Cursor getRow(long rowId) {
+        String where = KEY_ROWID + "=" + rowId;
+        Cursor c = 	myDataBase.query(true, DATABASE_TABLE1, ALL_KEYS,
+                where, null, null, null, null, null);
+        if (c != null) {
+            c.moveToFirst();
+        }
+        return c;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public ArrayList<String> getCategory() {
         SQLiteDatabase db = this.getReadableDatabase();

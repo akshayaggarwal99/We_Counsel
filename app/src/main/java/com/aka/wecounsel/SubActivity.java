@@ -1,6 +1,7 @@
 package com.aka.wecounsel;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -34,7 +37,7 @@ public class SubActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
-        tv=(TextView)findViewById(R.id.tv);
+//        tv=(TextView)findViewById(R.id.tv);
         Intent i = getIntent();
        rank =i.getExtras().getString("ranks");
         int pre_rank =Integer.parseInt(rank);
@@ -54,13 +57,14 @@ public class SubActivity extends ActionBarActivity {
         }
         try {
             myDbHelper.openDataBase();
+            populateListView();
         } catch (SQLException sqle) {
             throw sqle;
         }
 
-        String data=myDbHelper.getCollege();
+     //   String data=myDbHelper.getCollege();
         myDbHelper.close();
-        tv.setText(data);
+      //  tv.setText(data);
 
 
 
@@ -127,6 +131,44 @@ public class SubActivity extends ActionBarActivity {
 
 
 
+    }
+
+    private void populateListView() {
+
+        Cursor cursor=myDbHelper.getAllRows();
+
+
+        // Allow activity to manage lifetime of the cursor.
+        // DEPRECATED! Runs on the UI thread, OK for small/short queries.
+        startManagingCursor(cursor);
+
+        // Setup mapping from cursor to view fields:
+        String[] fromFieldNames = new String[]
+        {DataBaseHelper.KEY_BRANCH_CODE, DataBaseHelper.KEY_GENOP, DataBaseHelper.KEY_GENCL};
+        int[] toViewIDs = new int[]
+                {R.id.item_branch,     R.id.item_open,           R.id.item_close};
+
+
+
+
+
+
+
+        // Create adapter to may columns of the DB onto elemesnt in the UI.
+        SimpleCursorAdapter myCursorAdapter =
+                new SimpleCursorAdapter(
+                        this,		// Context
+                        R.layout.college_list_item,	// Row layout template
+                        cursor,					// cursor (set of DB records to map)
+                        fromFieldNames,			// DB Column names
+                        toViewIDs				// View IDs to put information in
+                );
+
+
+
+        // Set the adapter for the list view
+        ListView myList = (ListView) findViewById(R.id.college_list);
+        myList.setAdapter(myCursorAdapter);
     }
 }
 
