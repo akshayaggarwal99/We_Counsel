@@ -13,18 +13,16 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
-EditText username,password;
-    String user,pass;
-    Button login;
+EditText et_rank;
+    String rank;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        username = (EditText) findViewById(R.id.loginUsername);
-        password = (EditText) findViewById(R.id.loginPassword);
-        user = username.getText().toString();
-        pass = password.getText().toString();
+
+
 
 
     }
@@ -52,8 +50,11 @@ EditText username,password;
         return super.onOptionsItemSelected(item);
     }
 
-    public void onlogin(View view) {
-        Intent intent= new Intent(getApplicationContext(),SelectionActivity.class);
+    public void onFindCollegesClick(View view) {
+        Intent intent=new Intent(getApplicationContext(),SubActivity.class);
+        et_rank=(EditText)findViewById(R.id.edit_score);
+        rank = et_rank.getText().toString();
+        intent.putExtra("ranks", rank);
         startActivity(intent);
     }
 }
