@@ -1,6 +1,7 @@
 package com.aka.wecounsel;
 
 import android.content.Intent;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.io.IOException;
 
 import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
@@ -22,15 +26,18 @@ public class SubActivity extends ActionBarActivity {
     ViewPager pager;
  //   ViewPagerAdapter adapter;
     String rank;
-    DataBaseHelper db;
+    DataBaseHelper myDbHelper;
 
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
+        tv=(TextView)findViewById(R.id.tv);
         Intent i = getIntent();
        rank =i.getExtras().getString("ranks");
+        int pre_rank =Integer.parseInt(rank);
 
 
 
@@ -39,9 +46,25 @@ public class SubActivity extends ActionBarActivity {
 
 
 
+        myDbHelper = new DataBaseHelper(this);
+        try {
+            myDbHelper.createDataBase();
+        } catch (IOException ioe) {
+            throw new Error("Unable to create database");
+        }
+        try {
+            myDbHelper.openDataBase();
+        } catch (SQLException sqle) {
+            throw sqle;
+        }
 
-        db = new DataBaseHelper(this);
-        SQLiteDatabase sqldb = db.getWritableDatabase();
+        String data=myDbHelper.getCollege();
+        myDbHelper.close();
+        tv.setText(data);
+
+
+
+
 
 
 

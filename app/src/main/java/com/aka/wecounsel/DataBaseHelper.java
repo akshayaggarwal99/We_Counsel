@@ -1,5 +1,6 @@
 package com.aka.wecounsel;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -24,6 +25,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static String DB_NAME = "jeeadvance.db";
 
     public static final String DATABASE_TABLE1 = "jee_2013";
+    public static final String KEY_ROWID="_id";
+    public static final String KEY_COLLEGE="college_name";
+    public static final String KEY_BRANCH="branch";
+    public static final String KEY_BRANCH_CODE="code_branch";
+    public static final String KEY_GENOP="GENOP";
+    public static final String KEY_GENCL="GENCL";
+    public static final String KEY_OBCOP="OBCOP";
+    public static final String KEY_OBCCL="OBCCL";
+    public static final String KEY_SCOP="SCOP";
+    public static final String KEY_SCCL="SCCL";
+    public static final String KEY_STOP="STOP";
+    public static final String KEY_STCL="STCL";
+
 
     private SQLiteDatabase myDataBase;
 
@@ -151,6 +165,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+
     }
 
     public ArrayList<String> getCategory() {
@@ -166,20 +181,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return data;
     }
-    public int getCollege(int rank) {
+    public String getCollege() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(
-                "SELECT * FROM jee_2013 WHERE GENOP < rank AND GENCL> rank", null);
+        String[] columns = new String[]{KEY_ROWID, KEY_COLLEGE, KEY_BRANCH, KEY_BRANCH_CODE, KEY_GENOP, KEY_GENCL};
+        Cursor c =db.query(DATABASE_TABLE1,columns,null,null,null,null,null);
+        String result ="";
+        int iRow=c.getColumnIndex(KEY_ROWID);
+        int iCollege=c.getColumnIndex(KEY_COLLEGE);
+        int iBranch=c.getColumnIndex(KEY_BRANCH);
+        int iBranch_Code=c.getColumnIndex(KEY_BRANCH_CODE);
+        int iGENOP=c.getColumnIndex(KEY_GENOP);
+        int iGENCL=c.getColumnIndex(KEY_GENCL);
 
-        int data ;
+        for(c.moveToFirst();!c.isAfterLast();c.moveToNext() ){
+            result =result + c.getString(iRow)+" " + c.getString(iCollege) +" "+c.getString(iBranch)+" " + c.getString(iBranch_Code) + "\n";
 
-        if (cursor != null) {
-            cursor.moveToFirst();
         }
-        data = cursor.getInt(cursor.getColumnIndex("category_description"));
-        cursor.close();
-        return data;
+
+
+
+        return result;
+
     }
+
+
 
 
 
