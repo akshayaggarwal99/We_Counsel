@@ -11,12 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.startapp.android.publish.StartAppAd;
+import com.startapp.android.publish.StartAppSDK;
+
+
 
 public class Splash extends ActionBarActivity {
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StartAppSDK.init(this, "104406577", "204309303", true);
         setContentView(R.layout.activity_splash);
 
 
@@ -31,7 +41,7 @@ public class Splash extends ActionBarActivity {
         Thread th = new Thread() {
             public void run() {
                 try {
-                    sleep(3000);
+                    sleep(4000);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();

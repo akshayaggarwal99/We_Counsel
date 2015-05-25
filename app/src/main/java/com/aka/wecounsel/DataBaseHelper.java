@@ -37,6 +37,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String KEY_SCCL="SCCL";
     public static final String KEY_STOP="STOP";
     public static final String KEY_STCL="STCL";
+
+    public  final String KEY_RANK="";
+
     public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_COLLEGE, KEY_BRANCH, KEY_BRANCH_CODE,KEY_GENOP,KEY_GENCL,KEY_OBCOP,KEY_OBCCL,KEY_SCOP,KEY_SCCL,KEY_STOP,KEY_STCL};
 
     public static final int COL_ROWID = 0;

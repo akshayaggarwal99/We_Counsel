@@ -33,6 +33,8 @@ public class SubActivity extends ActionBarActivity {
  //   ViewPagerAdapter adapter;
     String rank;
     DataBaseHelper myDbHelper;
+    public   String KEY_RANK_OPEN="GNOP";
+    public   String KEY_RANK_CLOSE="GNCL";
 
     TextView tv;
 
@@ -50,6 +52,24 @@ public class SubActivity extends ActionBarActivity {
 
 
         getSupportActionBar().setTitle(string);
+
+
+        if(cat.equals("GEN")){
+            KEY_RANK_OPEN =DataBaseHelper.KEY_GENOP;
+            KEY_RANK_CLOSE =DataBaseHelper.KEY_GENCL;
+
+        }else if(cat.equals("OBC")){
+            KEY_RANK_OPEN =DataBaseHelper.KEY_OBCOP;
+            KEY_RANK_CLOSE =DataBaseHelper.KEY_OBCCL;
+
+        }else if(cat.equals("SC")){
+            KEY_RANK_OPEN =DataBaseHelper.KEY_SCOP;
+            KEY_RANK_CLOSE =DataBaseHelper.KEY_SCCL;
+        }else if(cat.equals("ST")){
+            KEY_RANK_OPEN =DataBaseHelper.KEY_STOP;
+            KEY_RANK_CLOSE =DataBaseHelper.KEY_SCCL;
+        }
+
 
 
 
@@ -141,6 +161,7 @@ public class SubActivity extends ActionBarActivity {
 
     private void populateListView() {
 
+
         int pre_rank =Integer.parseInt(rank);
         Cursor cursor=myDbHelper.getAllRows(pre_rank);
 
@@ -150,10 +171,12 @@ public class SubActivity extends ActionBarActivity {
         startManagingCursor(cursor);
 
         // Setup mapping from cursor to view fields:
+
         String[] fromFieldNames = new String[]
-        {DataBaseHelper.KEY_COLLEGE,DataBaseHelper.KEY_BRANCH_CODE ,DataBaseHelper.KEY_BRANCH,DataBaseHelper.KEY_GENOP, DataBaseHelper.KEY_GENCL};
+        {DataBaseHelper.KEY_COLLEGE,DataBaseHelper.KEY_BRANCH_CODE ,DataBaseHelper.KEY_BRANCH,KEY_RANK_OPEN, KEY_RANK_CLOSE};
         int[] toViewIDs = new int[]
                 {R.id.item_college, R.id.item_branch ,R.id.item_branch_name ,  R.id.item_open,           R.id.item_close};
+
 
 
 
