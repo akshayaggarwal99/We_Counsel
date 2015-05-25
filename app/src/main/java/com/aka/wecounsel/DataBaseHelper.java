@@ -182,7 +182,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public Cursor getAllRows(int rank) {
        // String where =null;
         Cursor c =     myDataBase.query(true, DATABASE_TABLE1, ALL_KEYS,
-                KEY_GENCL + " >?",new String[]{String.valueOf(rank)}  , null, null, null, null);
+                KEY_GENCL + " >?",new String[]{String.valueOf(rank)}  , null, null, "(" + KEY_GENCL + "-" +rank+")" + "ASC", null);
         if (c != null) {
             c.moveToFirst();
         }
