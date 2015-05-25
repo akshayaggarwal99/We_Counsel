@@ -179,10 +179,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // Return all data in the database.
-    public Cursor getAllRows() {
-        String where = null;
+    public Cursor getAllRows(int rank) {
+       // String where =null;
         Cursor c = 	myDataBase.query(true, DATABASE_TABLE1, ALL_KEYS,
-                where, null, null, null, null, null);
+                KEY_GENCL + " >" + rank ,null , null, null, null, null);
         if (c != null) {
             c.moveToFirst();
         }

@@ -44,7 +44,7 @@ public class SubActivity extends ActionBarActivity {
         Intent i = getIntent();
         String cat =i.getExtras().getString("category");
        rank =i.getExtras().getString("ranks");
-       // int pre_rank =Integer.parseInt(rank);
+
 
         String string = "Expected "+ cat + " Rank is " + rank ;
 
@@ -141,7 +141,8 @@ public class SubActivity extends ActionBarActivity {
 
     private void populateListView() {
 
-        Cursor cursor=myDbHelper.getAllRows();
+        int pre_rank =Integer.parseInt(rank);
+        Cursor cursor=myDbHelper.getAllRows(pre_rank);
 
 
         // Allow activity to manage lifetime of the cursor.
