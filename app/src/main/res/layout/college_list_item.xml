@@ -8,9 +8,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Branch_Code"
+        android:text="College"
         android:textColor="@color/primaryColorDark"
-        android:id="@+id/item_branch"
+        android:id="@+id/item_college"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -21,7 +21,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Small Text"
         android:id="@+id/item_open"
-        android:layout_below="@+id/item_branch"
+        android:layout_below="@+id/item_college"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -33,5 +33,26 @@
         android:layout_alignTop="@+id/item_open"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Branch_CODE"
+        android:id="@+id/item_branch"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/item_open"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Branch"
+        android:id="@+id/item_branch_name"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/item_branch" />
 
 </RelativeLayout>

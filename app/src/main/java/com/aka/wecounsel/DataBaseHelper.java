@@ -39,6 +39,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String KEY_STCL="STCL";
     public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_COLLEGE, KEY_BRANCH, KEY_BRANCH_CODE,KEY_GENOP,KEY_GENCL,KEY_OBCOP,KEY_OBCCL,KEY_SCOP,KEY_SCCL,KEY_STOP,KEY_STCL};
 
+    public static final int COL_ROWID = 0;
+    public static final int COL_COLLEGE= 1;
+    public static final int COL_BRANCH = 2;
+    public static final int COL_BRANCH_CODE = 3;
+    public static final int COL_GENOP = 4;
+    public static final int COL_GENCL = 5;
+    public static final int COL_OBCOP= 6;
+    public static final int COL_OBCCL = 7;
+    public static final int COL_SCOP = 8;
+    public static final int COL_SCCL = 9;
     private SQLiteDatabase myDataBase;
 
     private final Context myContext;

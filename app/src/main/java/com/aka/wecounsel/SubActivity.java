@@ -13,9 +13,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -58,6 +61,7 @@ public class SubActivity extends ActionBarActivity {
         try {
             myDbHelper.openDataBase();
             populateListView();
+          //  registerListClickCallback();
         } catch (SQLException sqle) {
             throw sqle;
         }
@@ -144,9 +148,9 @@ public class SubActivity extends ActionBarActivity {
 
         // Setup mapping from cursor to view fields:
         String[] fromFieldNames = new String[]
-        {DataBaseHelper.KEY_BRANCH_CODE, DataBaseHelper.KEY_GENOP, DataBaseHelper.KEY_GENCL};
+        {DataBaseHelper.KEY_COLLEGE,DataBaseHelper.KEY_BRANCH_CODE ,DataBaseHelper.KEY_BRANCH,DataBaseHelper.KEY_GENOP, DataBaseHelper.KEY_GENCL};
         int[] toViewIDs = new int[]
-                {R.id.item_branch,     R.id.item_open,           R.id.item_close};
+                {R.id.item_college, R.id.item_branch ,R.id.item_branch_name ,  R.id.item_open,           R.id.item_close};
 
 
 
@@ -170,7 +174,41 @@ public class SubActivity extends ActionBarActivity {
         ListView myList = (ListView) findViewById(R.id.college_list);
         myList.setAdapter(myCursorAdapter);
     }
-}
+
+
+
+//    private void registerListClickCallback() {
+//        ListView myList = (ListView) findViewById(R.id.college_list);
+//        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View viewClicked,
+//                                    int position, long idInDB) {
+//
+//                Cursor cursor = myDbHelper.getRow(idInDB);
+//                if (cursor.moveToFirst()) {
+//                    long idDB = cursor.getLong(DataBaseHelper.COL_ROWID);
+//                    String name = cursor.getString(DataBaseHelper.COL_COLLEGE);
+//                    String branch = cursor.getString(DataBaseHelper.COL_BRANCH);
+////                    int studentNum = cursor.getInt(DataBaseHelper.COL_GENOP);
+////                    int favColour = cursor.getInt(DataBaseHelper.COL_GENCL);
+//
+//                    String message = "ID: " + idDB + "\n"
+//                            + "College: " + name + "\n"
+//                            + "Branch: " + branch + "\n";
+//
+//                    Toast.makeText(SubActivity.this, message, Toast.LENGTH_LONG).show();
+//                }
+//                cursor.close();
+//            }
+//        });
+
+    }
+
+
+
+
+
+
 
 //    @Override
 //    public void onTabSelected(MaterialTab tab) {
