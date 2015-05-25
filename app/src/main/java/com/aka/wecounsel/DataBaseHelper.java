@@ -181,8 +181,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     // Return all data in the database.
     public Cursor getAllRows(int rank) {
        // String where =null;
-        Cursor c = 	myDataBase.query(true, DATABASE_TABLE1, ALL_KEYS,
-                KEY_GENCL + " >" + rank ,null , null, null, null, null);
+        Cursor c =     myDataBase.query(true, DATABASE_TABLE1, ALL_KEYS,
+                KEY_GENCL + " >?",new String[]{String.valueOf(rank)}  , null, null, null, null);
         if (c != null) {
             c.moveToFirst();
         }
