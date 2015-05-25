@@ -1,31 +1,49 @@
 package com.aka.wecounsel;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
 
-EditText et_rank;
+    EditText et_rank;
     String rank;
+
+
+    Spinner spinner_category;
+    private String[] state = {"GEN", "OBC", "SC", "ST"
+    };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        spinner_category = (Spinner) findViewById(R.id.spinnerstate);
+        ArrayAdapter<String> adapter_state = new ArrayAdapter<String>(this,
+                R.layout.spinner_item, state);
+        adapter_state
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_category.setAdapter(adapter_state);
+
+
 
 
 
 
     }
+
 
 
     @Override
@@ -51,9 +69,11 @@ EditText et_rank;
     }
 
     public void onFindCollegesClick(View view) {
-        Intent intent=new Intent(getApplicationContext(),SubActivity.class);
-        et_rank=(EditText)findViewById(R.id.edit_score);
+        Intent intent = new Intent(getApplicationContext(), SubActivity.class);
+        et_rank = (EditText) findViewById(R.id.edit_score);
         rank = et_rank.getText().toString();
+        String category =spinner_category.getSelectedItem().toString();
+        intent.putExtra("category",category);
         intent.putExtra("ranks", rank);
         startActivity(intent);
     }

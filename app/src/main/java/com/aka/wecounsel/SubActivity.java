@@ -42,12 +42,14 @@ public class SubActivity extends ActionBarActivity {
         setContentView(R.layout.activity_sub);
 //        tv=(TextView)findViewById(R.id.tv);
         Intent i = getIntent();
+        String cat =i.getExtras().getString("category");
        rank =i.getExtras().getString("ranks");
-        int pre_rank =Integer.parseInt(rank);
+       // int pre_rank =Integer.parseInt(rank);
+
+        String string = "Expected "+ cat + " Rank is " + rank ;
 
 
-
-        getSupportActionBar().setTitle("Expected Rank - " + rank);
+        getSupportActionBar().setTitle(string);
 
 
 

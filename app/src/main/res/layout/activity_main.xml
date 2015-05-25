@@ -13,7 +13,9 @@
     android:weightSum="50"
     android:orientation="vertical"
     android:id="@+id/layout_1"
-    >
+    android:layout_alignParentTop="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true">
     <EditText
         android:id="@+id/edit_score"
         android:layout_width="wrap_content"
@@ -26,29 +28,42 @@
         android:imeOptions="actionNext"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="104dp" /><requestFocus/>
+        /><requestFocus/>
 
-    />
-</LinearLayout>
+    /></LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="50"
+        android:id="@+id/layout_2"
         android:orientation="vertical"
         android:layout_below="@+id/layout_1"
-        > <Button
+        >
+
+        <Spinner
+            android:id="@+id/spinnerstate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+
+      />
+
+        <Button
         android:id="@+id/find_colleges"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/activity_vertical_margin"
+
         android:background="@drawable/button_shape"
         android:text="Find Colleges"
         android:textSize="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
         android:onClick="onFindCollegesClick"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="193dp" />
+         />
 
     </LinearLayout>
 

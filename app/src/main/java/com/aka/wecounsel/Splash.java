@@ -21,7 +21,7 @@ public class Splash extends ActionBarActivity {
 
 
         Toast toast = new Toast(this);
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LayoutInflater inflater = getLayoutInflater();
         View appearance = inflater.inflate(R.layout.custom_toast,
@@ -31,7 +31,7 @@ public class Splash extends ActionBarActivity {
         Thread th = new Thread() {
             public void run() {
                 try {
-                    sleep(4000);
+                    sleep(3000);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
