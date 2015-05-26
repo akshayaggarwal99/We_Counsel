@@ -94,14 +94,14 @@ public class SubActivity_2 extends ActionBarActivity {
 
     private void populateTextView() {
 
+        int open,close;
         int pre_score = Integer.parseInt(score);
-        Cursor cursor=myDbHelper.getRow(pre_score);
-        if( cursor != null && cursor.moveToFirst() ){
-            String title = cursor.getString(cursor.getColumnIndex("OPR"));
-         //   Log.v(title,"title");
-            cursor.close();
+        String result =myDbHelper.getRow(pre_score);
 
-            rank.setText(title);
+         //   Log.v(title,"title");
+
+
+            rank.setText("test "+ result);
         }
 
 
@@ -109,7 +109,7 @@ public class SubActivity_2 extends ActionBarActivity {
 
 
 
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

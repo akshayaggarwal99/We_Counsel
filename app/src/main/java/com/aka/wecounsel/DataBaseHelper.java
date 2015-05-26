@@ -188,6 +188,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
 
+
     }
 
     // Return all data in the database.
@@ -203,14 +204,28 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // Get a specific row (by rowId)
-    public Cursor getRow(int score) {
-        String where =KEY_MRK_LO + " <?"+score + " AND "+ KEY_MRK_UP + " >?" + score ;
+    public String getRow(int score) {
+        String where =KEY_MRK_LO + " <?" + score ;
         Cursor c = 	myDataBase.query(true, DATABASE_TABLE2, ALL_KEYS_2,
                 where, null, null, null, null, null);
+        String result ="";
+        int iMRK_LO=c.getColumnIndex(KEY_MRK_LO);
+        int iMRK_UP=c.getColumnIndex(KEY_MRK_UP);
+        int iOPR=c.getColumnIndex(KEY_OPR);
+        int iCLR=c.getColumnIndex(KEY_CLR);
+
+        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+            result= result + c.getInt(iMRK_LO)+ " " +c.getInt(iMRK_UP) +" " + c.getInt(iOPR) +"\n";
+        }
+
+
         if (c != null) {
             c.moveToFirst();
         }
-        return c;
+
+
+
+        return result;
     }
 
 
@@ -228,19 +243,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
 
-    public ArrayList<String> getCategory() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM jee_2013",
-                null);
-        ArrayList<String> data = new ArrayList<String>();
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                data.add(cursor.getString(cursor.getColumnIndex("category")));
-            }
-        }
-        cursor.close();
-        return data;
-    }
     public String getCollege() {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = new String[]{KEY_ROWID, KEY_COLLEGE, KEY_BRANCH, KEY_BRANCH_CODE, KEY_GENOP, KEY_GENCL};
