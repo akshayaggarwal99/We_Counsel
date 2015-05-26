@@ -163,7 +163,8 @@ public class SubActivity extends ActionBarActivity {
 
 
         int pre_rank =Integer.parseInt(rank);
-        Cursor cursor=myDbHelper.getAllRows(pre_rank);
+        Cursor cursor=myDbHelper.getAllRows(pre_rank ,KEY_RANK_OPEN,KEY_RANK_CLOSE);
+
 
 
         // Allow activity to manage lifetime of the cursor.

@@ -2,6 +2,7 @@ package com.aka.wecounsel;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -38,7 +39,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String KEY_STOP="STOP";
     public static final String KEY_STCL="STCL";
 
-    public  final String KEY_RANK="";
+    public final String KEY_RANK = "";
 
     public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_COLLEGE, KEY_BRANCH, KEY_BRANCH_CODE,KEY_GENOP,KEY_GENCL,KEY_OBCOP,KEY_OBCCL,KEY_SCOP,KEY_SCCL,KEY_STOP,KEY_STCL};
 
@@ -182,10 +183,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // Return all data in the database.
-    public Cursor getAllRows(int rank) {
+    public Cursor getAllRows(int rank,String KEY_RANK_OPEN ,String KEY_RANK_CLOSE) {
        // String where =null;
+
         Cursor c =     myDataBase.query(true, DATABASE_TABLE1, ALL_KEYS,
-                KEY_GENCL + " >?",new String[]{String.valueOf(rank)}  , null, null, "(" + KEY_GENCL + "-" +rank+")" + "ASC", null);
+                KEY_RANK_CLOSE + " >?",new String[]{String.valueOf(rank)}  , null, null, "(" + KEY_RANK_CLOSE + "-" +rank+")" + "ASC", null);
         if (c != null) {
             c.moveToFirst();
         }
