@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.startapp.android.publish.StartAppAd;
-import com.startapp.android.publish.StartAppSDK;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -26,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
     EditText et_rank;
     String rank;
 
-    private StartAppAd startAppAd = new StartAppAd(this);
+
     Spinner spinner_category;
     private String[] state = {"GEN", "OBC", "SC", "ST"
     };
@@ -35,9 +33,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StartAppSDK.init(this, "104406577", "204309303", true);
 
-        StartAppAd.showSplash(this, savedInstanceState);
         setContentView(R.layout.activity_main);
         spinner_category = (Spinner) findViewById(R.id.spinnerstate);
         ArrayAdapter<String> adapter_state = new ArrayAdapter<String>(this,
@@ -53,25 +49,7 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-//ads
-    @Override
-    public void onResume() {
-        super.onResume();
-        startAppAd.onResume();
-    }
 
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        startAppAd.onPause();
-    }
-
-    @Override
-    public void onBackPressed() {
-        startAppAd.onBackPressed();
-        super.onBackPressed();
-    }
 
 
 

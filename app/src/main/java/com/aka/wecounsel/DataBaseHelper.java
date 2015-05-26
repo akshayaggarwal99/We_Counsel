@@ -25,7 +25,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static String DB_NAME = "jeeadvance.db";
 
-    public static final String DATABASE_TABLE1 = "jee_2013";
+    public static final String DATABASE_TABLE1 = "newdb";
     public static final String DATABASE_TABLE2 = "RANK_PREDICTOR";
     public static final String KEY_ROWID="_id";
     public static final String KEY_COLLEGE="college_name";
@@ -62,6 +62,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final int COL_SCOP = 8;
     public static final int COL_SCCL = 9;
     private SQLiteDatabase myDataBase;
+    private static final int DATABASE_VERSION = 2;
 
     private final Context myContext;
 
@@ -72,7 +73,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      */
     public DataBaseHelper(Context context) {
 
-        super(context, DB_NAME, null, 1);
+        super(context, DB_NAME, null, DATABASE_VERSION);
         this.myContext = context;
     }
 
@@ -205,24 +206,31 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     // Get a specific row (by rowId)
     public String getRow(int score) {
-        String where =KEY_MRK_LO + " <?" + score ;
-        Cursor c = 	myDataBase.query(true, DATABASE_TABLE2, ALL_KEYS_2,
-                where, null, null, null, null, null);
+
+
+        Cursor c = myDataBase.rawQuery("SELECT * FROM "+DATABASE_TABLE2+"  WHERE " + KEY_MRK_UP +  " >= ? AND " + KEY_MRK_LO + " <= ?"  , new String[]{Integer.toString(score),Integer.toString(score)});
         String result ="";
         int iMRK_LO=c.getColumnIndex(KEY_MRK_LO);
         int iMRK_UP=c.getColumnIndex(KEY_MRK_UP);
         int iOPR=c.getColumnIndex(KEY_OPR);
         int iCLR=c.getColumnIndex(KEY_CLR);
 
-        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
-            result= result + c.getInt(iMRK_LO)+ " " +c.getInt(iMRK_UP) +" " + c.getInt(iOPR) +"\n";
-        }
-
 
         if (c != null) {
             c.moveToFirst();
         }
 
+
+        result= c.getString(c.getColumnIndex(KEY_OPR))+" and  "+  c.getString(c.getColumnIndex(KEY_CLR)) + " ";
+
+
+
+
+
+        String where =KEY_MRK_UP + " >?" + score ;
+
+//        Cursor c = 	myDataBase.query(true, DATABASE_TABLE2, ALL_KEYS_2,
+//                where, null, null, null, null, null);
 
 
         return result;

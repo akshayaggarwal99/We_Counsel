@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -96,13 +98,24 @@ public class SubActivity_2 extends ActionBarActivity {
 
         int open,close;
         int pre_score = Integer.parseInt(score);
-        String result =myDbHelper.getRow(pre_score);
+//      Cursor c=myDbHelper.getRow(pre_score);
 
-         //   Log.v(title,"title");
+        String result=myDbHelper.getRow(pre_score);
 
 
-            rank.setText("test "+ result);
-        }
+
+        rank.setText(" YOUR EXPECTED RANK IS IN BETWEEN - "+ result);
+
+//        if( c != null && c.moveToFirst() ){
+//            result  = c.getString(c.getColumnIndex("OPR"));
+//
+//            c.close();
+//        }
+
+
+
+        //   Log.v(title,"title");
+    }
 
 
 

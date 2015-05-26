@@ -7,12 +7,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class RankPredictor extends ActionBarActivity {
 
     EditText et_score;
     String score;
+    int pre_score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +47,17 @@ public class RankPredictor extends ActionBarActivity {
 
         et_score = (EditText) findViewById(R.id.edit_score);
         score = et_score.getText().toString();
-        Intent intent =new Intent(this,SubActivity_2.class);
+        pre_score=Integer.parseInt(score);
+        if(pre_score < 504 ){
+Intent intent =new Intent(this,SubActivity_2.class);
         intent.putExtra("score",score);
         startActivity(intent);
+
+        }
+        if(pre_score > 504) Toast.makeText(getApplicationContext(),"INVALID ENTRY",Toast.LENGTH_SHORT).show();
+        else if(pre_score < 176 ) Toast.makeText(getApplicationContext(),"BELOW 14000",Toast.LENGTH_SHORT).show();
+
+
+
     }
 }

@@ -32,7 +32,7 @@ public class SubActivity extends ActionBarActivity {
     String rank;
     DataBaseHelper myDbHelper;
     public   String KEY_RANK_OPEN="GNOP";
-    public   String KEY_RANK_CLOSE="GNCL";
+    public   String KEY_RANK_CLOSE="GNCR";
 
     TextView tv;
 
