@@ -6,4 +6,6 @@
     <string name="title_activity_splash">Splash</string>
     <string name="title_activity_sub">SubActivity</string>
     <string name="title_activity_selection">SelectionActivity</string>
+    <string name="title_activity_rank_predictor">RankPredictor</string>
+    <string name="title_activity_sub_activity_2">SubActivity_2</string>
 </resources>

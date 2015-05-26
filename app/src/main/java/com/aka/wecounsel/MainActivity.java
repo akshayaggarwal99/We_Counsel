@@ -101,7 +101,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void onFindCollegesClick(View view) {
         Intent intent = new Intent(getApplicationContext(), SubActivity.class);
-        et_rank = (EditText) findViewById(R.id.edit_score);
+        et_rank = (EditText) findViewById(R.id.edit_rank);
         rank = et_rank.getText().toString();
         String category =spinner_category.getSelectedItem().toString();
         intent.putExtra("category",category);

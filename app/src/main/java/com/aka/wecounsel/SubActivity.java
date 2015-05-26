@@ -22,14 +22,12 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
-import it.neokree.materialtabs.MaterialTab;
-import it.neokree.materialtabs.MaterialTabHost;
-import it.neokree.materialtabs.MaterialTabListener;
+
 
 
 public class SubActivity extends ActionBarActivity {
-    MaterialTabHost tabHost;
-    ViewPager pager;
+//    MaterialTabHost tabHost;
+//    ViewPager pager;
  //   ViewPagerAdapter adapter;
     String rank;
     DataBaseHelper myDbHelper;

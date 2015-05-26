@@ -26,6 +26,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static String DB_NAME = "jeeadvance.db";
 
     public static final String DATABASE_TABLE1 = "jee_2013";
+    public static final String DATABASE_TABLE2 = "RANK_PREDICTOR";
     public static final String KEY_ROWID="_id";
     public static final String KEY_COLLEGE="college_name";
     public static final String KEY_BRANCH="branch";
@@ -39,10 +40,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String KEY_STOP="STOP";
     public static final String KEY_STCL="STCL";
 
+
+    public static final String KEY_MRK_LO="MRK_LO";
+    public static final String KEY_MRK_UP="MRK_UP";
+    public static final String KEY_OPR="OPR";
+    public static final String KEY_CLR="CLR";
+
     public final String KEY_RANK = "";
 
     public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_COLLEGE, KEY_BRANCH, KEY_BRANCH_CODE,KEY_GENOP,KEY_GENCL,KEY_OBCOP,KEY_OBCCL,KEY_SCOP,KEY_SCCL,KEY_STOP,KEY_STCL};
 
+    public static final String[] ALL_KEYS_2 = new String[] {KEY_MRK_LO,KEY_MRK_UP,KEY_OPR,KEY_CLR};
     public static final int COL_ROWID = 0;
     public static final int COL_COLLEGE= 1;
     public static final int COL_BRANCH = 2;
@@ -195,9 +203,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // Get a specific row (by rowId)
-    public Cursor getRow(long rowId) {
-        String where = KEY_ROWID + "=" + rowId;
-        Cursor c = 	myDataBase.query(true, DATABASE_TABLE1, ALL_KEYS,
+    public Cursor getRow(int score) {
+        String where =KEY_MRK_LO + " <?"+score + " AND "+ KEY_MRK_UP + " >?" + score ;
+        Cursor c = 	myDataBase.query(true, DATABASE_TABLE2, ALL_KEYS_2,
                 where, null, null, null, null, null);
         if (c != null) {
             c.moveToFirst();
