@@ -46,17 +46,26 @@ public class RankPredictor extends ActionBarActivity {
     public void onPredictRankClick(View view) {
 
         et_score = (EditText) findViewById(R.id.edit_score);
+        String ed_text = et_score.getText().toString().trim();
         score = et_score.getText().toString();
-        pre_score=Integer.parseInt(score);
-        if(pre_score < 504 ){
-Intent intent =new Intent(this,SubActivity_2.class);
-        intent.putExtra("score",score);
-        startActivity(intent);
 
+
+
+        if(ed_text.isEmpty() || ed_text.length() == 0 || ed_text.equals("") || ed_text == null) {
+
+            Toast.makeText(getApplicationContext(), "Score can't be empty ", Toast.LENGTH_SHORT).show();
+            //EditText is empty
+        }else    pre_score = Integer.parseInt(score);
+        if (pre_score < 504 && pre_score >= 176) {
+            Intent intent = new Intent(this, SubActivity_2.class);
+            intent.putExtra("score", score);
+            startActivity(intent);
+
+        } else if (pre_score > 504) {
+            Toast.makeText(getApplicationContext(), "INVALID ENTRY", Toast.LENGTH_SHORT).show();
+        }else if (pre_score < 176) {
+            Toast.makeText(getApplicationContext(), "Rank Below 14000  ", Toast.LENGTH_SHORT).show();
         }
-        if(pre_score > 504) Toast.makeText(getApplicationContext(),"INVALID ENTRY",Toast.LENGTH_SHORT).show();
-        else if(pre_score < 176 ) Toast.makeText(getApplicationContext(),"BELOW 14000",Toast.LENGTH_SHORT).show();
-
 
 
     }

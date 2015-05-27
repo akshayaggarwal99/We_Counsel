@@ -50,10 +50,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-
-
-
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        finish();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,8 +83,26 @@ public class MainActivity extends ActionBarActivity {
         et_rank = (EditText) findViewById(R.id.edit_rank);
         rank = et_rank.getText().toString();
         String category =spinner_category.getSelectedItem().toString();
-        intent.putExtra("category",category);
-        intent.putExtra("ranks", rank);
-        startActivity(intent);
-    }
-}
+
+        String ed_text = et_rank.getText().toString().trim();
+
+        if(ed_text.isEmpty() || ed_text.length() == 0 || ed_text.equals("") || ed_text == null)
+        {
+
+            Toast.makeText(getApplicationContext(),"Rank can't be empty ",Toast.LENGTH_SHORT).show();
+            //EditText is empty
+        }
+        else
+        {
+
+            intent.putExtra("category",category);
+            intent.putExtra("ranks", rank);
+            startActivity(intent);}
+        }
+            //EditText is not empty
+        }
+
+
+
+
+

@@ -157,6 +157,13 @@ public class SubActivity extends ActionBarActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Intent i=new Intent(this,MainActivity.class);
+        startActivity(i);
+    }
+
     private void populateListView() {
 
 
