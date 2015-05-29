@@ -14,15 +14,20 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 
 
 public class MainActivity extends ActionBarActivity {
 
     EditText et_rank;
-    String rank;
+    String rank,jee;
+    Bundle basket = new Bundle();
+    RadioButton jee2013 ,jee2014;
+    RadioGroup rg;
+    Button find_colleges;
 
 
     Spinner spinner_category;
@@ -41,11 +46,11 @@ public class MainActivity extends ActionBarActivity {
         adapter_state
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_category.setAdapter(adapter_state);
+        rg = (RadioGroup) findViewById(R.id.radio_group);
+        find_colleges = (Button) findViewById(R.id.find_colleges);
 
-
-
-
-
+        jee2013 = (RadioButton) findViewById(R.id.radioButton_2013);
+        jee2014 = (RadioButton) findViewById(R.id.radioButton_2014);
 
     }
 
@@ -56,51 +61,75 @@ public class MainActivity extends ActionBarActivity {
         finish();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public void onFindCollegesClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), SubActivity.class);
+
+
         et_rank = (EditText) findViewById(R.id.edit_rank);
         rank = et_rank.getText().toString();
-        String category =spinner_category.getSelectedItem().toString();
+        String category = spinner_category.getSelectedItem().toString();
 
         String ed_text = et_rank.getText().toString().trim();
+        if (ed_text.isEmpty() || ed_text.length() == 0 || ed_text.equals("") || ed_text == null) {
 
-        if(ed_text.isEmpty() || ed_text.length() == 0 || ed_text.equals("") || ed_text == null)
-        {
-
-            Toast.makeText(getApplicationContext(),"Rank can't be empty ",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Rank can't be empty ", Toast.LENGTH_SHORT).show();
             //EditText is empty
         }
-        else
-        {
 
-            intent.putExtra("category",category);
-            intent.putExtra("ranks", rank);
-            startActivity(intent);}
+        int selectedId = rg.getCheckedRadioButtonId();
+        if(selectedId == jee2013.getId()) {
+            jee="jee_2013";
+
+
+
         }
-            //EditText is not empty
+        if(selectedId == jee2014.getId()) {
+
+
+            jee="jee_2014";
+
+
         }
+        Intent intent = new Intent(getApplicationContext(), SubActivity.class);
+        basket.putString("category", category);
+        basket.putString("ranks", rank);
+        basket.putString("jee",jee);
+        intent.putExtras(basket);
+        startActivity(intent);
+
+
+
+    }
+
+
+
+
+}
+
+
+//EditText is not empty
+
 
 
 

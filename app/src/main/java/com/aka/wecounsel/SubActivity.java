@@ -23,53 +23,51 @@ import android.widget.Toast;
 import java.io.IOException;
 
 
-
-
 public class SubActivity extends ActionBarActivity {
-//    MaterialTabHost tabHost;
+    //    MaterialTabHost tabHost;
 //    ViewPager pager;
- //   ViewPagerAdapter adapter;
-    String rank;
+    //   ViewPagerAdapter adapter;
+    String rank, jee="jee2013";
     DataBaseHelper myDbHelper;
-    public   String KEY_RANK_OPEN="GNOP";
-    public   String KEY_RANK_CLOSE="GNCR";
+    public String KEY_RANK_OPEN = "GNOP";
+    public String KEY_RANK_CLOSE = "GNCR";
 
-    TextView tv;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
 //        tv=(TextView)findViewById(R.id.tv);
         Intent i = getIntent();
-        String cat =i.getExtras().getString("category");
-       rank =i.getExtras().getString("ranks");
+        Bundle basket = i.getExtras();
+
+        String cat = basket.getString("category");
+        jee = basket.getString("jee");
+
+        rank = basket.getString("ranks");
 
 
-        String string = "Expected "+ cat + " Rank is " + rank ;
+        String string = "Expected " + cat + " Rank is " + rank;
 
 
         getSupportActionBar().setTitle(string);
 
 
-        if(cat.equals("GEN")){
-            KEY_RANK_OPEN =DataBaseHelper.KEY_GENOP;
-            KEY_RANK_CLOSE =DataBaseHelper.KEY_GENCL;
+        if (cat.equals("GEN")) {
+            KEY_RANK_OPEN = DataBaseHelper.KEY_GENOP;
+            KEY_RANK_CLOSE = DataBaseHelper.KEY_GENCL;
 
-        }else if(cat.equals("OBC")){
-            KEY_RANK_OPEN =DataBaseHelper.KEY_OBCOP;
-            KEY_RANK_CLOSE =DataBaseHelper.KEY_OBCCL;
+        } else if (cat.equals("OBC")) {
+            KEY_RANK_OPEN = DataBaseHelper.KEY_OBCOP;
+            KEY_RANK_CLOSE = DataBaseHelper.KEY_OBCCL;
 
-        }else if(cat.equals("SC")){
-            KEY_RANK_OPEN =DataBaseHelper.KEY_SCOP;
-            KEY_RANK_CLOSE =DataBaseHelper.KEY_SCCL;
-        }else if(cat.equals("ST")){
-            KEY_RANK_OPEN =DataBaseHelper.KEY_STOP;
-            KEY_RANK_CLOSE =DataBaseHelper.KEY_SCCL;
+        } else if (cat.equals("SC")) {
+            KEY_RANK_OPEN = DataBaseHelper.KEY_SCOP;
+            KEY_RANK_CLOSE = DataBaseHelper.KEY_SCCL;
+        } else if (cat.equals("ST")) {
+            KEY_RANK_OPEN = DataBaseHelper.KEY_STOP;
+            KEY_RANK_CLOSE = DataBaseHelper.KEY_SCCL;
         }
-
-
-
 
 
         myDbHelper = new DataBaseHelper(this);
@@ -81,48 +79,14 @@ public class SubActivity extends ActionBarActivity {
         try {
             myDbHelper.openDataBase();
             populateListView();
-          //  registerListClickCallback();
+            //  registerListClickCallback();
         } catch (SQLException sqle) {
             throw sqle;
         }
 
-     //   String data=myDbHelper.getCollege();
+        //   String data=myDbHelper.getCollege();
         myDbHelper.close();
-      //  tv.setText(data);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //  tv.setText(data);
 
 
 //        Toolbar toolbar = (android.support.v7.widget.Toolbar) this.findViewById(R.id.toolbar);
@@ -154,22 +118,20 @@ public class SubActivity extends ActionBarActivity {
 //        }
 
 
-
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Intent i=new Intent(this,MainActivity.class);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
     private void populateListView() {
 
 
-        int pre_rank =Integer.parseInt(rank);
-        Cursor cursor=myDbHelper.getAllRows(pre_rank ,KEY_RANK_OPEN,KEY_RANK_CLOSE);
-
+        int pre_rank = Integer.parseInt(rank);
+        Cursor cursor = myDbHelper.getAllRows(pre_rank, KEY_RANK_OPEN, KEY_RANK_CLOSE,jee);
 
 
         // Allow activity to manage lifetime of the cursor.
@@ -179,34 +141,26 @@ public class SubActivity extends ActionBarActivity {
         // Setup mapping from cursor to view fields:
 
         String[] fromFieldNames = new String[]
-        {DataBaseHelper.KEY_COLLEGE,DataBaseHelper.KEY_BRANCH_CODE ,DataBaseHelper.KEY_BRANCH,KEY_RANK_OPEN, KEY_RANK_CLOSE};
+                {DataBaseHelper.KEY_COLLEGE, DataBaseHelper.KEY_BRANCH_CODE, DataBaseHelper.KEY_BRANCH, KEY_RANK_OPEN, KEY_RANK_CLOSE};
         int[] toViewIDs = new int[]
-                {R.id.item_college, R.id.item_branch ,R.id.item_branch_name ,  R.id.item_open,           R.id.item_close};
-
-
-
-
-
-
+                {R.id.item_college, R.id.item_branch, R.id.item_branch_name, R.id.item_open, R.id.item_close};
 
 
         // Create adapter to may columns of the DB onto elemesnt in the UI.
         SimpleCursorAdapter myCursorAdapter =
                 new SimpleCursorAdapter(
-                        this,		// Context
-                        R.layout.college_list_item,	// Row layout template
-                        cursor,					// cursor (set of DB records to map)
-                        fromFieldNames,			// DB Column names
-                        toViewIDs				// View IDs to put information in
+                        this,        // Context
+                        R.layout.college_list_item,    // Row layout template
+                        cursor,                    // cursor (set of DB records to map)
+                        fromFieldNames,            // DB Column names
+                        toViewIDs                // View IDs to put information in
                 );
-
 
 
         // Set the adapter for the list view
         ListView myList = (ListView) findViewById(R.id.college_list);
         myList.setAdapter(myCursorAdapter);
     }
-
 
 
 //    private void registerListClickCallback() {
@@ -234,12 +188,7 @@ public class SubActivity extends ActionBarActivity {
 //            }
 //        });
 
-    }
-
-
-
-
-
+}
 
 
 //    @Override

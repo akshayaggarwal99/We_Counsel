@@ -16,7 +16,7 @@
         android:hint="Enter Your Expected Score"
         android:textColor="@color/sinch_purple"
         android:background="@drawable/inputbox"
-        android:imeOptions="actionNext"
+        android:imeOptions="actionDone"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:layout_alignParentTop="true"
@@ -34,8 +34,7 @@
         android:layout_gravity="center"
         android:onClick="onPredictRankClick"
 
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="171dp" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

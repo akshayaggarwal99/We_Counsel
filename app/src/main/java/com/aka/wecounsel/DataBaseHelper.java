@@ -25,7 +25,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static String DB_NAME = "jeeadvance.db";
 
-    public static final String DATABASE_TABLE1 = "newdb";
+    public static final String DATABASE_TABLE1 = "jee_2013";
+    public static final String DATABASE_TABLE3 = "jee_2014";
+
     public static final String DATABASE_TABLE2 = "RANK_PREDICTOR";
     public static final String KEY_ROWID="_id";
     public static final String KEY_COLLEGE="college_name";
@@ -193,10 +195,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // Return all data in the database.
-    public Cursor getAllRows(int rank,String KEY_RANK_OPEN ,String KEY_RANK_CLOSE) {
+    public Cursor getAllRows(int rank,String KEY_RANK_OPEN ,String KEY_RANK_CLOSE,String jee) {
+//        String s=jee;
+        String DATABASE_TABLE ;
+//        if(s=="jee_2013"){ DATABASE_TABLE="jee_2013";}
+//        else {DATABASE_TABLE="jee_2014";}
+
        // String where =null;
 
-        Cursor c =     myDataBase.query(true, DATABASE_TABLE1, ALL_KEYS,
+        Cursor c =     myDataBase.query(true, jee, ALL_KEYS,
                 KEY_RANK_CLOSE + " >?",new String[]{String.valueOf(rank)}  , null, null, "(" + KEY_RANK_CLOSE + "-" +rank+")" + "ASC", null);
         if (c != null) {
             c.moveToFirst();

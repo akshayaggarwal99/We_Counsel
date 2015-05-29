@@ -26,24 +26,15 @@ public class SubActivity_2 extends ActionBarActivity {
         setContentView(R.layout.activity_sub_activity_2);
 
 
-        rank=(TextView)findViewById(R.id.tv_rank);
+        rank = (TextView) findViewById(R.id.tv_rank);
         Intent i = getIntent();
-        score =i.getExtras().getString("score");
+        score = i.getExtras().getString("score");
 
 
-        String string = "Expected score - "+ score ;
+        String string = "Expected score - " + score;
 
 
         getSupportActionBar().setTitle(string);
-
-
-
-
-
-
-
-
-
 
 
         myDbHelper = new DataBaseHelper(this);
@@ -65,46 +56,18 @@ public class SubActivity_2 extends ActionBarActivity {
         //  tv.setText(data);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     private void populateTextView() {
 
-        int open,close;
+        int open, close;
         int pre_score = Integer.parseInt(score);
 //      Cursor c=myDbHelper.getRow(pre_score);
 
-        String result=myDbHelper.getRow(pre_score);
+        String result = myDbHelper.getRow(pre_score);
 
 
-
-        rank.setText(" YOUR EXPECTED RANK IS IN BETWEEN - "+ result);
+        rank.setText(" YOUR EXPECTED RANK IS IN BETWEEN - " + result);
 
 //        if( c != null && c.moveToFirst() ){
 //            result  = c.getString(c.getColumnIndex("OPR"));
@@ -113,36 +76,35 @@ public class SubActivity_2 extends ActionBarActivity {
 //        }
 
 
-
         //   Log.v(title,"title");
     }
 
 
-
-
-
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sub_activity_2, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
+
+
+
+
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_sub_activity_2, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+//}

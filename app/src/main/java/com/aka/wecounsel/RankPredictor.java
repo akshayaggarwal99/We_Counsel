@@ -21,33 +21,34 @@ public class RankPredictor extends ActionBarActivity {
         setContentView(R.layout.activity_rank_predictor);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_rank_predictor, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_rank_predictor, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public void onPredictRankClick(View view) {
 
         et_score = (EditText) findViewById(R.id.edit_score);
         String ed_text = et_score.getText().toString().trim();
         score = et_score.getText().toString();
+        boolean b=false;
 
 
 
@@ -55,6 +56,7 @@ public class RankPredictor extends ActionBarActivity {
 
             Toast.makeText(getApplicationContext(), "Score can't be empty ", Toast.LENGTH_SHORT).show();
             //EditText is empty
+            b=true;
         }else    pre_score = Integer.parseInt(score);
         if (pre_score < 504 && pre_score >= 176) {
             Intent intent = new Intent(this, SubActivity_2.class);
@@ -63,8 +65,8 @@ public class RankPredictor extends ActionBarActivity {
 
         } else if (pre_score > 504) {
             Toast.makeText(getApplicationContext(), "INVALID ENTRY", Toast.LENGTH_SHORT).show();
-        }else if (pre_score < 176) {
-            Toast.makeText(getApplicationContext(), "Rank Below 14000  ", Toast.LENGTH_SHORT).show();
+        }else if (pre_score < 176&& !b ) {
+            Toast.makeText(getApplicationContext(), "Rank above 14000  ", Toast.LENGTH_SHORT).show();
         }
 
 
