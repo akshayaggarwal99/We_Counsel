@@ -1,50 +1,56 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:layout_weight="100"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.aka.wecounsel.SelectionActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:weightSum="50"
-    android:orientation="vertical"
-    android:id="@+id/layout_1"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentEnd="true">
-    <EditText
-        android:id="@+id/edit_rank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:inputType="number"
-        android:padding="20dp"
-        android:hint="Enter Expected Cat. Rank"
-        android:textColor="@color/sinch_purple"
-        android:background="@drawable/inputbox"
-        android:imeOptions="actionDone"
-        android:layout_gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        /><requestFocus/>
 
-    /></LinearLayout>
+
+    ,
+
+    <LinearLayout
+        android:id="@+id/layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:weightSum="50">
+
+        <EditText
+            android:id="@+id/edit_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:background="@drawable/inputbox"
+            android:hint="Enter Expected Cat. Rank"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:padding="20dp"
+            android:textColor="@android:color/black"
+            android:textSize="22sp" />
+
+        <requestFocus />
+
+        />
+    </LinearLayout>
 
 
     <LinearLayout
+        android:id="@+id/layout_2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="50"
-        android:id="@+id/layout_2"
-        android:orientation="vertical"
         android:layout_below="@+id/layout_1"
-        >
+        android:orientation="vertical"
+        android:weightSum="50">
 
         <Spinner
             android:id="@+id/spinnerstate"
@@ -52,54 +58,59 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
 
-      />
+            />
+
 
         <RadioGroup
-            android:layout_width="match_parent"
             android:id="@+id/radio_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2013"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_margin="10dp"
-            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
 
-            android:id="@+id/radioButton_2013"
-            android:layout_gravity="center_horizontal" />
+            <RadioButton
+                android:id="@+id/radioButton_2013"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:layout_marginTop="15dp"
+                android:text="2013"
+                android:checked="true"
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2014"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_margin="10dp"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-            android:id="@+id/radioButton_2014"
-            android:layout_gravity="center_horizontal" />
 
-       </RadioGroup>
+            <RadioButton
+                android:id="@+id/radioButton_2014"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="2014"
+
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+        </RadioGroup>
+
         <Button
-        android:id="@+id/find_colleges"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:id="@+id/find_colleges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        android:background="@drawable/button_shape"
-        android:text="Find Colleges"
-        android:textSize="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="100dp"
-        android:onClick="onFindCollegesClick"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-         />
-
+            android:background="@drawable/button_shape"
+            android:onClick="onFindCollegesClick"
+            android:text="Find Colleges"
+            android:textSize="20dp" />
 
 
     </LinearLayout>
+
 
 </RelativeLayout>

@@ -49,4 +49,9 @@ public class SelectionActivity extends ActionBarActivity {
         Intent intent = new Intent(this,RankPredictor.class);
                 startActivity(intent);
     }
+
+    public void onJeemainClick(View view) {
+        Intent i=new Intent(this,JeeMain.class);
+        startActivity(i);
+    }
 }

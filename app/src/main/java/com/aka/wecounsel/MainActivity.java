@@ -95,35 +95,32 @@ public class MainActivity extends ActionBarActivity {
 
             Toast.makeText(getApplicationContext(), "Rank can't be empty ", Toast.LENGTH_SHORT).show();
             //EditText is empty
+        } else {
+            int selectedId = rg.getCheckedRadioButtonId();
+            if (selectedId == jee2013.getId()) {
+                jee = "jee_2013";
+
+
+            }
+            if (selectedId == jee2014.getId()) {
+
+
+                jee = "jee_2014";
+
+
+            }
+            Intent intent = new Intent(getApplicationContext(), SubActivity.class);
+            basket.putString("category", category);
+            basket.putString("ranks", rank);
+            basket.putString("jee", jee);
+            intent.putExtras(basket);
+            startActivity(intent);
+
+
         }
-
-        int selectedId = rg.getCheckedRadioButtonId();
-        if(selectedId == jee2013.getId()) {
-            jee="jee_2013";
-
-
-
-        }
-        if(selectedId == jee2014.getId()) {
-
-
-            jee="jee_2014";
-
-
-        }
-        Intent intent = new Intent(getApplicationContext(), SubActivity.class);
-        basket.putString("category", category);
-        basket.putString("ranks", rank);
-        basket.putString("jee",jee);
-        intent.putExtras(basket);
-        startActivity(intent);
-
 
 
     }
-
-
-
 
 }
 

@@ -8,8 +8,8 @@ android {
         applicationId "com.aka.wecounsel"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 4
-        versionName "1.4"
+        versionCode 6
+        versionName "2.1"
     }
     buildTypes {
         release {
@@ -22,5 +22,5 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.1.1'
-    compile files('libs/StartAppInApp-3.0.jar')
+    
 }

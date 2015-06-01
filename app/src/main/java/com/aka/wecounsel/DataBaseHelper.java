@@ -53,6 +53,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_COLLEGE, KEY_BRANCH, KEY_BRANCH_CODE,KEY_GENOP,KEY_GENCL,KEY_OBCOP,KEY_OBCCL,KEY_SCOP,KEY_SCCL,KEY_STOP,KEY_STCL};
 
     public static final String[] ALL_KEYS_2 = new String[] {KEY_MRK_LO,KEY_MRK_UP,KEY_OPR,KEY_CLR};
+
     public static final int COL_ROWID = 0;
     public static final int COL_COLLEGE= 1;
     public static final int COL_BRANCH = 2;
@@ -64,7 +65,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final int COL_SCOP = 8;
     public static final int COL_SCCL = 9;
     private SQLiteDatabase myDataBase;
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     private final Context myContext;
 
@@ -190,6 +191,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE1);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE2);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE3);
+        onCreate(db);
 
 
     }

@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="kudos !! After all your years of struggling , You have finally managed to crack your way to prestigious IITs."
+        android:text="kudos !! After all your years of struggling , You have finally managed to crack your way into prestigious IITs."
         android:id="@+id/textView"
         android:textSize="20dp"
         android:gravity="center"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:gravity="center"
-        android:textColor="@color/primaryColorDark"
+        android:textColor="@color/accentColor"
         android:id="@+id/tv_rank"
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"

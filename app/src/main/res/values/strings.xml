@@ -8,4 +8,5 @@
     <string name="title_activity_selection">SelectionActivity</string>
     <string name="title_activity_rank_predictor">RankPredictor</string>
     <string name="title_activity_sub_activity_2">SubActivity_2</string>
+    <string name="title_activity_jee_main">JeeMain</string>
 </resources>
