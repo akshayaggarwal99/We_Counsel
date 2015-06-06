@@ -23,7 +23,7 @@ import android.widget.Toast;
 import java.io.IOException;
 
 
-public class SubActivity extends ActionBarActivity {
+public class SubActivityAdv extends ActionBarActivity {
     //    MaterialTabHost tabHost;
 //    ViewPager pager;
     //   ViewPagerAdapter adapter;

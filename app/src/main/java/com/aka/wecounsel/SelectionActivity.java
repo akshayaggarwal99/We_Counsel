@@ -58,7 +58,7 @@ public class SelectionActivity extends ActionBarActivity {
 //    }
 
     public void onFindCollegesSelectionClick(View view) {
-        Intent intent=new Intent(this,MainActivity.class);
+        Intent intent=new Intent(this,College_Selection.class);
         startActivity(intent);
     }
 
@@ -68,10 +68,10 @@ public class SelectionActivity extends ActionBarActivity {
     }
 
 
-    public void onGoogleFormClick(View view) {
-        Intent i=new Intent(this,GoogleForm.class);
-        startActivity(i);
-    }
+//    public void onGoogleFormClick(View view) {
+//        Intent i=new Intent(this,GoogleForm.class);
+//        startActivity(i);
+//    }
 
 
 
@@ -93,8 +93,8 @@ public class SelectionActivity extends ActionBarActivity {
             float delta = mAccelCurrent - mAccelLast;
             mAccel = mAccel * 0.9f + delta; // perform low-cut filter
             if (mAccel > 12) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Device has shaken.", Toast.LENGTH_LONG);
-                toast.show();
+                Intent i=new Intent(getApplicationContext(),GoogleForm.class);
+                    startActivity(i);
             }
         }
 

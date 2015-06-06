@@ -3,8 +3,6 @@ package com.aka.wecounsel;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -59,7 +57,7 @@ public class RankPredictor extends ActionBarActivity {
             b=true;
         }else    pre_score = Integer.parseInt(score);
         if (pre_score < 504 && pre_score >= 176) {
-            Intent intent = new Intent(this, SubActivity_2.class);
+            Intent intent = new Intent(this, SubActivityRank.class);
             intent.putExtra("score", score);
             startActivity(intent);
 

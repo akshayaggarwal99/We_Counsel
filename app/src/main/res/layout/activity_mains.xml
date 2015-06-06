@@ -1,0 +1,129 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="com.aka.wecounsel.Mains">
+
+
+    <LinearLayout
+        android:id="@+id/layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:weightSum="50">
+
+        <EditText
+            android:id="@+id/edit_rank_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:background="@drawable/inputbox"
+            android:hint="Enter Expected Cat. Rank"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:padding="20dp"
+            android:textColor="@android:color/black"
+            android:textSize="22sp" />
+
+        <requestFocus />
+
+        />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout_1"
+        android:orientation="vertical"
+        android:weightSum="50">
+
+        <Spinner
+            android:id="@+id/spinnerstate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HS : HOME STATE "
+            android:id="@+id/tv_hs"
+            android:textSize="18dp"
+            android:textColor="@color/accentColor"
+            android:layout_margin="20dp"
+            android:layout_gravity="center_horizontal" />
+        <!--<RadioGroup-->
+            <!--android:id="@+id/radio_group_mains"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_marginTop="20dp">-->
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/radioButton_homestate"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:text="Home State"-->
+                <!--android:checked="true"-->
+
+                <!--android:textSize="18dp"-->
+                <!--android:textStyle="bold" />-->
+
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/radioButton_OtherState"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:text="Other State"-->
+
+                <!--android:textSize="18dp"-->
+                <!--android:textStyle="bold" />-->
+
+        <!--</RadioGroup>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OS : OTHER STATE "
+            android:textSize="18dp"
+            android:id="@+id/tv_os"
+            android:textColor="@color/accentColor"
+            android:layout_margin="20dp"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/find_mains_colleges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/button_shape"
+            android:onClick="onFindCollegesClick"
+            android:text="Find Colleges"
+            android:textSize="20dp" />
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

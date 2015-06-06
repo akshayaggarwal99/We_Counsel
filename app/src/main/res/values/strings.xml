@@ -10,4 +10,7 @@
     <string name="title_activity_sub_activity_2">SubActivity_2</string>
     <string name="title_activity_jee_main">JeeMain</string>
     <string name="title_activity_google_form">GoogleForm</string>
+    <string name="title_activity_college__selection">College_Selection</string>
+    <string name="title_activity_mains">Mains</string>
+    <string name="title_activity_sub_activity_mains">SubActivityMains</string>
 </resources>

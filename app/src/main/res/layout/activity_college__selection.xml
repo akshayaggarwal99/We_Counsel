@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.aka.wecounsel.College_Selection">
+
+    <Button
+        android:id="@+id/advanced_colleges_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/button_shape"
+        android:text="Jee Advanced"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:onClick="onJeeAdvancedCollegesSelectionClick"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp" />
+
+
+    <Button
+        android:id="@+id/mains_colleges_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/button_shape"
+        android:text="Jee Mains"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:onClick="onJeeMainsCollegesSelectionClick"
+        android:layout_marginTop="88dp"
+        android:layout_below="@+id/advanced_colleges_selection"
+        android:layout_alignLeft="@+id/advanced_colleges_selection"
+        android:layout_alignStart="@+id/advanced_colleges_selection" />
+
+
+
+</RelativeLayout>

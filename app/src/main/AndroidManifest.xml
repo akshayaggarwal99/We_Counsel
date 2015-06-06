@@ -5,6 +5,7 @@
     android:versionName="1.1" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/wecounsel"
@@ -24,7 +25,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,28 +33,43 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SubActivity"
+            android:name=".SubActivityAdv"
             android:label="@string/title_activity_sub"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".SelectionActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".RankPredictor"
             android:label="@string/title_activity_rank_predictor"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".SubActivityRank"
+            android:label="@string/title_activity_sub_activity_2"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".SubActivity_2"
-            android:label="@string/title_activity_sub_activity_2" >
-        </activity>
-
-        <activity
             android:name=".GoogleForm"
             android:label="@string/title_activity_google_form"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".College_Selection"
+            android:label="Select Your Exam"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Mains"
+            android:label="@string/title_activity_mains"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".SubActivityMains"
+            android:label="@string/title_activity_sub_activity_mains"
             android:screenOrientation="portrait">
         </activity>
     </application>

@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.io.IOException;
 
 
-public class SubActivity_2 extends ActionBarActivity {
+public class SubActivityRank extends ActionBarActivity {
     String score;
     DataBaseHelper myDbHelper;
     TextView rank;

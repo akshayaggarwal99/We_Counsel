@@ -27,6 +27,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_TABLE1 = "jee_2013";
     public static final String DATABASE_TABLE3 = "jee_2014";
+    public static final String DATABASE_TABLE4 = "jee_mains";
+
 
     public static final String DATABASE_TABLE2 = "RANK_PREDICTOR";
     public static final String KEY_ROWID="_id";
@@ -41,6 +43,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String KEY_SCCL="SCCL";
     public static final String KEY_STOP="STOP";
     public static final String KEY_STCL="STCL";
+    public static final String KEY_QUOTA="Quota";
 
 
     public static final String KEY_MRK_LO="MRK_LO";
@@ -51,6 +54,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public final String KEY_RANK = "";
 
     public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_COLLEGE, KEY_BRANCH, KEY_BRANCH_CODE,KEY_GENOP,KEY_GENCL,KEY_OBCOP,KEY_OBCCL,KEY_SCOP,KEY_SCCL,KEY_STOP,KEY_STCL};
+    public static final String[] ALL_KEYS_MAINS = new String[] {KEY_ROWID, KEY_COLLEGE, KEY_BRANCH,KEY_QUOTA,KEY_GENOP,KEY_GENCL,KEY_OBCOP,KEY_OBCCL,KEY_SCOP,KEY_SCCL,KEY_STOP,KEY_STCL};
 
     public static final String[] ALL_KEYS_2 = new String[] {KEY_MRK_LO,KEY_MRK_UP,KEY_OPR,KEY_CLR};
 
@@ -65,7 +69,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final int COL_SCOP = 8;
     public static final int COL_SCCL = 9;
     private SQLiteDatabase myDataBase;
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     private final Context myContext;
 
@@ -194,6 +198,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE1);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE2);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE3);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE4);
         onCreate(db);
 
 
@@ -222,10 +227,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         Cursor c = myDataBase.rawQuery("SELECT * FROM "+DATABASE_TABLE2+"  WHERE " + KEY_MRK_UP +  " >= ? AND " + KEY_MRK_LO + " <= ?"  , new String[]{Integer.toString(score),Integer.toString(score)});
         String result ="";
-        int iMRK_LO=c.getColumnIndex(KEY_MRK_LO);
-        int iMRK_UP=c.getColumnIndex(KEY_MRK_UP);
-        int iOPR=c.getColumnIndex(KEY_OPR);
-        int iCLR=c.getColumnIndex(KEY_CLR);
+//        int iMRK_LO=c.getColumnIndex(KEY_MRK_LO);
+//        int iMRK_UP=c.getColumnIndex(KEY_MRK_UP);
+//        int iOPR=c.getColumnIndex(KEY_OPR);
+//        int iCLR=c.getColumnIndex(KEY_CLR);
 
 
         if (c != null) {
@@ -246,6 +251,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
         return result;
+    }
+
+    public Cursor getAllRow(int rank,String KEY_RANK_OPEN ,String KEY_RANK_CLOSE,String Quota) {
+
+        String DATABASE_TABLE ;
+
+        Cursor c =     myDataBase.query(true,"jee_mains", ALL_KEYS_MAINS,
+                KEY_RANK_CLOSE + " >?",new String[]{String.valueOf(rank)}  , null, null, "(" + KEY_RANK_CLOSE + "-" +rank+")" + "ASC", null);
+        if (c != null) {
+            c.moveToFirst();
+        }
+        return c;
     }
 
 
